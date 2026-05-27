@@ -19,4 +19,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintVertical_bias="0.25"/>
 
+    <View
+        android:id="@+id/eventDot"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:background="@drawable/event_dot"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/cellDayText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.2"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

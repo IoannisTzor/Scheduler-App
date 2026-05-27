@@ -1,5 +1,6 @@
 package com.example.calendar;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,13 +42,26 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position)
     {
         final LocalDate date = days.get(position);
-        if(date == null)
-            holder.dayOfMonth.setText("");
+
+        holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
+
+        if(date.equals(CalendarUtils.selectedDate))
+            holder.parentView.setBackgroundColor(Color.LTGRAY);
+
+        if(date.getMonth().equals(CalendarUtils.selectedDate.getMonth()))
+            holder.dayOfMonth.setTextColor(Color.BLACK);
+        else
+            holder.dayOfMonth.setTextColor(Color.LTGRAY);
+
+        java.util.ArrayList<Event> events = Event.eventsForDate(date);
+        if (events.isEmpty())
+        {
+            holder.eventDot.setVisibility(View.INVISIBLE);
+        }
         else
         {
-            holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
-            if(date.equals(CalendarUtils.selectedDate))
-                holder.parentView.setBackgroundColor(Color.LTGRAY);
+            holder.eventDot.setVisibility(View.VISIBLE);
+            holder.eventDot.setBackgroundTintList(ColorStateList.valueOf(events.get(0).getColor()));
         }
     }
 

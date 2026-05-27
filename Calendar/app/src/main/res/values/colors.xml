@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="gray">#888</color>
+    <color name="lightGray">#EEE</color>
     <color name="blue">#0000FF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="eventRed">#E53935</color>
+    <color name="eventGreen">#43A047</color>
+    <color name="eventOrange">#FB8C00</color>
+    <color name="eventPurple">#8E24AA</color>
+
 </resources>

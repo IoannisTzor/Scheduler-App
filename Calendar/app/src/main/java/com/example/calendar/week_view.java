@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 
+
 public class week_view extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
     private TextView monthYearText;
@@ -84,10 +85,21 @@ public class week_view extends AppCompatActivity implements CalendarAdapter.OnIt
         ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
         EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
         eventListView.setAdapter(eventAdapter);
+        eventListView.setOnItemClickListener((parent, view, position, id) -> {
+            int index = Event.eventsList.indexOf(dailyEvents.get(position));
+            Intent intent = new Intent(this, event_edit.class);
+            intent.putExtra(event_edit.EXTRA_EVENT_INDEX, index);
+            startActivity(intent);
+        });
     }
 
     public void newEventAction(View view)
     {
         startActivity(new Intent(this, event_edit.class));
+    }
+
+    public void dailyAction(View view)
+    {
+        startActivity(new Intent(this, DailyCalendarActivity.class));
     }
 }
