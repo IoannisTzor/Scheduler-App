@@ -32,6 +32,9 @@ public class EventStorage
                 obj.put("recurrenceType", event.getRecurrenceType().name());
                 obj.put("recurrenceInterval", event.getRecurrenceInterval());
                 obj.put("reminderMinutes", event.getReminderMinutes());
+                obj.put("eventType", event.getEventType().name());
+                obj.put("importance", event.getImportance());
+                obj.put("difficulty", event.getDifficulty());
                 array.put(obj);
             }
 
@@ -73,6 +76,9 @@ public class EventStorage
                 RecurrenceType recurrenceType = RecurrenceType.valueOf(
                     obj.optString("recurrenceType", "NONE")
                 );
+                EventType eventType = EventType.valueOf(
+                    obj.optString("eventType", "CLASS")
+                );
                 Event.eventsList.add(new Event(
                     id,
                     obj.getString("name"),
@@ -82,7 +88,10 @@ public class EventStorage
                     obj.getInt("color"),
                     recurrenceType,
                     obj.optInt("recurrenceInterval", 1),
-                    obj.optInt("reminderMinutes", 15)
+                    obj.optInt("reminderMinutes", 15),
+                    eventType,
+                    obj.optInt("importance", 5),
+                    obj.optInt("difficulty", 5)
                 ));
             }
         }

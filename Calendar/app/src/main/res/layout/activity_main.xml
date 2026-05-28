@@ -8,16 +8,73 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Weekly"
-        android:textColor="@color/blue"
-        android:background="@null"
-        android:textStyle="bold"
-        android:onClick="weeklyAction"
-        android:textSize="20sp"/>
+        android:orientation="horizontal"
+        android:background="@color/surfaceDark"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <Button
+            android:id="@+id/navMonthlyBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:text="Monthly"
+            android:textColor="@color/accent"
+            android:background="@drawable/nav_pill_inactive"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:onClick="monthlyAction"
+            android:textSize="11sp"/>
+
+        <Button
+            android:id="@+id/navWeeklyBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:text="Weekly"
+            android:textColor="@color/accent"
+            android:background="@drawable/nav_pill_inactive"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:onClick="weeklyAction"
+            android:textSize="11sp"/>
+
+        <Button
+            android:id="@+id/navDailyBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:text="Daily"
+            android:textColor="@color/accent"
+            android:background="@drawable/nav_pill_inactive"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:onClick="dailyAction"
+            android:textSize="11sp"/>
+
+        <Button
+            android:id="@+id/navProjectsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:text="Projects"
+            android:textColor="@color/accent"
+            android:background="@drawable/nav_pill_inactive"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:onClick="projectsAction"
+            android:textSize="11sp"/>
+
+    </LinearLayout>
 
 
     <LinearLayout
@@ -32,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/back"
-            android:textColor="@color/blue"
+            android:textColor="@color/accent"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="previousMonthAction"
@@ -46,14 +103,14 @@
             android:text="Feb 2021"
             android:textSize="20sp"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textColor="@color/textPrimary"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/forward"
-            android:textColor="@color/blue"
+            android:textColor="@color/accent"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="nextMonthAction"
@@ -71,7 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SUN"
-            android:textColor="@color/gray"
+            android:textColor="@color/textSecondary"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -80,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="MON"
-            android:textColor="@color/gray"
+            android:textColor="@color/textSecondary"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -89,7 +146,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TUE"
-            android:textColor="@color/gray"
+            android:textColor="@color/textSecondary"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -98,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="WED"
-            android:textColor="@color/gray"
+            android:textColor="@color/textSecondary"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -107,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="THUR"
-            android:textColor="@color/gray"
+            android:textColor="@color/textSecondary"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -116,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="FRI"
-            android:textColor="@color/gray"
+            android:textColor="@color/textSecondary"
             android:textAlignment="center"
             android:textSize="16sp"/>
 
@@ -125,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SAT"
-            android:textColor="@color/gray"
+            android:textColor="@color/textSecondary"
             android:textAlignment="center"
             android:textSize="16sp"/>
 

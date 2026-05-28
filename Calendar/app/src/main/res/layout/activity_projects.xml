@@ -2,10 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DailyCalendarActivity">
+    android:orientation="vertical"
+    tools:context=".ProjectsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,91 +75,54 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="12dp">
+        android:text="Projects"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/back"
-            android:textColor="@color/accent"
-            android:background="@null"
-            android:textStyle="bold"
-            android:onClick="previousDayAction"
-            android:textSize="20sp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
 
         <TextView
-            android:id="@+id/monthDayText"
-            android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feb 2021"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:textColor="@color/textPrimary"/>
+            android:text="Sort by:"
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginEnd="8dp"/>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/forward"
-            android:textColor="@color/accent"
-            android:background="@null"
-            android:textStyle="bold"
-            android:onClick="nextDayAction"
-            android:textSize="20sp"/>
+        <Spinner
+            android:id="@+id/sortSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/dayOfWeekTV"
+        android:id="@+id/emptyProjectsTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Monday"
-        android:layout_marginBottom="10dp"
+        android:text="No projects yet. Create an event and select &quot;Project&quot; as the type."
+        android:textSize="16sp"
         android:textColor="@color/textSecondary"
         android:textAlignment="center"
-        android:textSize="18sp"/>
+        android:padding="32dp"
+        android:visibility="gone"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Event"
-        android:textColor="@color/accent"
-        android:background="@null"
-        android:textStyle="bold"
-        android:onClick="newEventAction"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
-
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/projectsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/hourLabelsColumn"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-
-            <FrameLayout
-                android:id="@+id/eventGrid"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="1440dp"/>
-
-        </LinearLayout>
-
-    </ScrollView>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

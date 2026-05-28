@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.time.LocalDate;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         CalendarUtils.selectedDate = LocalDate.now();
         EventStorage.load(this);
         setMonthView();
+        applyActiveNav(R.id.navMonthlyBtn);
     }
 
     private void initWidgets()
@@ -100,8 +102,39 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         }
     }
 
+    public void monthlyAction(View view) {}
+
     public void weeklyAction(View view)
     {
         startActivity(new Intent(this, week_view.class));
+    }
+
+    public void dailyAction(View view)
+    {
+        startActivity(new Intent(this, DailyCalendarActivity.class));
+    }
+
+    public void projectsAction(View view)
+    {
+        startActivity(new Intent(this, ProjectsActivity.class));
+    }
+
+    private void applyActiveNav(int activeId)
+    {
+        int[] ids = {R.id.navMonthlyBtn, R.id.navWeeklyBtn, R.id.navDailyBtn, R.id.navProjectsBtn};
+        for (int id : ids)
+        {
+            Button btn = findViewById(id);
+            if (id == activeId)
+            {
+                btn.setBackgroundResource(R.drawable.nav_pill_active);
+                btn.setTextColor(getColor(R.color.bgDark));
+            }
+            else
+            {
+                btn.setBackgroundResource(R.drawable.nav_pill_inactive);
+                btn.setTextColor(getColor(R.color.accent));
+            }
+        }
     }
 }

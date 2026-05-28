@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class week_view extends AppCompatActivity implements CalendarAdapter.OnIt
         setContentView(R.layout.activity_week_view);
         initWidgets();
         setWeekView();
+        applyActiveNav(R.id.navWeeklyBtn);
     }
 
     private void initWidgets()
@@ -98,8 +100,39 @@ public class week_view extends AppCompatActivity implements CalendarAdapter.OnIt
         startActivity(new Intent(this, event_edit.class));
     }
 
+    public void monthlyAction(View view)
+    {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public void weeklyAction(View view) {}
+
     public void dailyAction(View view)
     {
         startActivity(new Intent(this, DailyCalendarActivity.class));
+    }
+
+    public void projectsAction(View view)
+    {
+        startActivity(new Intent(this, ProjectsActivity.class));
+    }
+
+    private void applyActiveNav(int activeId)
+    {
+        int[] ids = {R.id.navMonthlyBtn, R.id.navWeeklyBtn, R.id.navDailyBtn, R.id.navProjectsBtn};
+        for (int id : ids)
+        {
+            Button btn = findViewById(id);
+            if (id == activeId)
+            {
+                btn.setBackgroundResource(R.drawable.nav_pill_active);
+                btn.setTextColor(getColor(R.color.bgDark));
+            }
+            else
+            {
+                btn.setBackgroundResource(R.drawable.nav_pill_inactive);
+                btn.setTextColor(getColor(R.color.accent));
+            }
+        }
     }
 }

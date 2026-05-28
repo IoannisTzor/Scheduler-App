@@ -1,5 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Calendar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Calendar" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/bgDark</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:colorBackground">@color/bgDark</item>
     </style>
 </resources>

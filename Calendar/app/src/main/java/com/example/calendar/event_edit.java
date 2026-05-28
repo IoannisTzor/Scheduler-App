@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,6 +32,10 @@ public class event_edit extends AppCompatActivity
     private EditText intervalET;
     private TextView intervalUnitTV;
     private Spinner reminderSpinner;
+    private RadioGroup eventTypeGroup;
+    private LinearLayout projectSection;
+    private SeekBar importanceSeekBar, difficultySeekBar;
+    private TextView importanceLabel, difficultyLabel;
 
     private LocalDate eventDate;
     private LocalTime startTime;
@@ -71,6 +77,8 @@ public class event_edit extends AppCompatActivity
         setupColorSwatches();
         setupRecurrenceSpinner();
         setupReminderSpinner();
+        setupEventTypeToggle();
+        setupSeekBars();
 
         eventIndex = getIntent().getIntExtra(EXTRA_EVENT_INDEX, -1);
 
@@ -85,6 +93,12 @@ public class event_edit extends AppCompatActivity
             preselectRecurrence(existing.getRecurrenceType(), existing.getRecurrenceInterval());
             preselectReminder(existing.getReminderMinutes());
             deleteEventBtn.setVisibility(View.VISIBLE);
+            if (existing.getEventType() == EventType.PROJECT)
+            {
+                eventTypeGroup.check(R.id.radioProject);
+                importanceSeekBar.setProgress(existing.getImportance() - 1);
+                difficultySeekBar.setProgress(existing.getDifficulty() - 1);
+            }
         }
         else
         {
@@ -113,6 +127,43 @@ public class event_edit extends AppCompatActivity
         intervalET = findViewById(R.id.intervalET);
         intervalUnitTV = findViewById(R.id.intervalUnitTV);
         reminderSpinner = findViewById(R.id.reminderSpinner);
+        eventTypeGroup = findViewById(R.id.eventTypeGroup);
+        projectSection = findViewById(R.id.projectSection);
+        importanceSeekBar = findViewById(R.id.importanceSeekBar);
+        difficultySeekBar = findViewById(R.id.difficultySeekBar);
+        importanceLabel = findViewById(R.id.importanceLabel);
+        difficultyLabel = findViewById(R.id.difficultyLabel);
+    }
+
+    private void setupEventTypeToggle()
+    {
+        eventTypeGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.radioProject)
+                projectSection.setVisibility(View.VISIBLE);
+            else
+                projectSection.setVisibility(View.GONE);
+        });
+    }
+
+    private void setupSeekBars()
+    {
+        importanceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                importanceLabel.setText("Importance: " + (progress + 1));
+            }
+            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+        difficultySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                difficultyLabel.setText("Difficulty: " + (progress + 1));
+            }
+            @Override public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
     }
 
     private void setupReminderSpinner()
@@ -216,7 +267,7 @@ public class event_edit extends AppCompatActivity
         for (int i = 0; i < swatchDrawables.length; i++)
         {
             if (i == index)
-                swatchDrawables[i].setStroke(strokeWidth, 0xFF333333);
+                swatchDrawables[i].setStroke(strokeWidth, 0xFFFFFFFF);
             else
                 swatchDrawables[i].setStroke(0, 0x00000000);
         }
@@ -293,11 +344,15 @@ public class event_edit extends AppCompatActivity
     public void saveEventAction(View view)
     {
         int reminderMinutes = REMINDER_MINUTES[reminderSpinner.getSelectedItemPosition()];
+        boolean isProject = eventTypeGroup.getCheckedRadioButtonId() == R.id.radioProject;
+        EventType eventType = isProject ? EventType.PROJECT : EventType.CLASS;
+        int importance = isProject ? importanceSeekBar.getProgress() + 1 : 0;
+        int difficulty = isProject ? difficultySeekBar.getProgress() + 1 : 0;
         Event event = new Event(
             eventNameET.getText().toString(),
             eventDate, startTime, endTime, selectedColor,
             selectedRecurrenceType(), selectedInterval(),
-            reminderMinutes
+            reminderMinutes, eventType, importance, difficulty
         );
         if (eventIndex >= 0)
         {

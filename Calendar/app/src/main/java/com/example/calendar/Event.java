@@ -40,6 +40,18 @@ public class Event
         return null;
     }
 
+    public static ArrayList<Event> projectsSortedByDate()
+    {
+        ArrayList<Event> projects = new ArrayList<>();
+        for (Event event : eventsList)
+        {
+            if (event.eventType == EventType.PROJECT)
+                projects.add(event);
+        }
+        projects.sort((a, b) -> a.date.compareTo(b.date));
+        return projects;
+    }
+
 
     private int id;
     private String name;
@@ -50,11 +62,14 @@ public class Event
     private RecurrenceType recurrenceType;
     private int recurrenceInterval;
     private int reminderMinutes; // -1 = no reminder, 0 = at start, else minutes before
+    private EventType eventType;
+    private int importance; // 1-10, project only
+    private int difficulty; // 1-10, project only
 
     // Constructor for new events — auto-generates ID
     public Event(String name, LocalDate date, LocalTime startTime, LocalTime endTime,
                  int color, RecurrenceType recurrenceType, int recurrenceInterval,
-                 int reminderMinutes)
+                 int reminderMinutes, EventType eventType, int importance, int difficulty)
     {
         this.id = (int)(System.currentTimeMillis() / 1000);
         this.name = name;
@@ -65,12 +80,15 @@ public class Event
         this.recurrenceType = recurrenceType;
         this.recurrenceInterval = recurrenceInterval;
         this.reminderMinutes = reminderMinutes;
+        this.eventType = eventType;
+        this.importance = importance;
+        this.difficulty = difficulty;
     }
 
     // Constructor for loading from storage — explicit ID
     public Event(int id, String name, LocalDate date, LocalTime startTime, LocalTime endTime,
                  int color, RecurrenceType recurrenceType, int recurrenceInterval,
-                 int reminderMinutes)
+                 int reminderMinutes, EventType eventType, int importance, int difficulty)
     {
         this.id = id;
         this.name = name;
@@ -81,6 +99,9 @@ public class Event
         this.recurrenceType = recurrenceType;
         this.recurrenceInterval = recurrenceInterval;
         this.reminderMinutes = reminderMinutes;
+        this.eventType = eventType;
+        this.importance = importance;
+        this.difficulty = difficulty;
     }
 
     public boolean occursOn(LocalDate queryDate)
@@ -139,4 +160,13 @@ public class Event
 
     public int getReminderMinutes() { return reminderMinutes; }
     public void setReminderMinutes(int reminderMinutes) { this.reminderMinutes = reminderMinutes; }
+
+    public EventType getEventType() { return eventType; }
+    public void setEventType(EventType eventType) { this.eventType = eventType; }
+
+    public int getImportance() { return importance; }
+    public void setImportance(int importance) { this.importance = importance; }
+
+    public int getDifficulty() { return difficulty; }
+    public void setDifficulty(int difficulty) { this.difficulty = difficulty; }
 }

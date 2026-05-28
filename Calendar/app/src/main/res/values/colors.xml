@@ -10,4 +10,12 @@
     <color name="eventOrange">#FB8C00</color>
     <color name="eventPurple">#8E24AA</color>
 
+    <!-- Dark theme -->
+    <color name="bgDark">#121212</color>
+    <color name="surfaceDark">#1E1E1E</color>
+    <color name="surfaceCard">#2C2C2C</color>
+    <color name="accent">#BB86FC</color>
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#AAAAAA</color>
+    <color name="selectedDay">#44BB86FC</color>
 </resources>

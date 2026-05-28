@@ -15,7 +15,7 @@
         android:text="Name:"
         android:textSize="20sp"
         android:textAlignment="center"
-        android:textColor="@color/black"/>
+        android:textColor="@color/textPrimary"/>
 
     <EditText
         android:id="@+id/eventNameET"
@@ -26,6 +26,79 @@
         android:ems="10"
         android:inputType="text"/>
 
+    <RadioGroup
+        android:id="@+id/eventTypeGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/radioClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class"
+            android:checked="true"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/radioProject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Project"
+            android:layout_marginStart="32dp"
+            android:textSize="16sp"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/projectSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="8dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp">
+
+        <TextView
+            android:id="@+id/importanceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Importance: 5"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"
+            android:layout_gravity="center"/>
+
+        <SeekBar
+            android:id="@+id/importanceSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="9"
+            android:progress="4"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/difficultyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Difficulty: 5"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"/>
+
+        <SeekBar
+            android:id="@+id/difficultySeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="9"
+            android:progress="4"
+            android:layout_marginTop="4dp"/>
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/eventDateTV"
         android:layout_width="wrap_content"
@@ -35,7 +108,7 @@
         android:text="Date"
         android:textSize="20sp"
         android:textAlignment="center"
-        android:textColor="@color/blue"
+        android:textColor="@color/accent"
         android:clickable="true"
         android:focusable="true"/>
 
@@ -48,7 +121,7 @@
         android:text="Start"
         android:textSize="20sp"
         android:textAlignment="center"
-        android:textColor="@color/blue"
+        android:textColor="@color/accent"
         android:clickable="true"
         android:focusable="true"/>
 
@@ -61,7 +134,7 @@
         android:text="End"
         android:textSize="20sp"
         android:textAlignment="center"
-        android:textColor="@color/blue"
+        android:textColor="@color/accent"
         android:clickable="true"
         android:focusable="true"/>
 
@@ -79,7 +152,7 @@
             android:layout_height="wrap_content"
             android:text="Repeat:"
             android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textColor="@color/textPrimary"
             android:layout_marginEnd="8dp"/>
 
         <Spinner
@@ -104,7 +177,7 @@
             android:layout_height="wrap_content"
             android:text="Every"
             android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textColor="@color/textPrimary"
             android:layout_marginEnd="8dp"/>
 
         <EditText
@@ -122,7 +195,7 @@
             android:layout_height="wrap_content"
             android:text="day(s)"
             android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textColor="@color/textPrimary"
             android:layout_marginStart="8dp"/>
 
     </LinearLayout>
@@ -141,7 +214,7 @@
             android:layout_height="wrap_content"
             android:text="Remind:"
             android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textColor="@color/textPrimary"
             android:layout_marginEnd="8dp"/>
 
         <Spinner
@@ -159,7 +232,7 @@
         android:layout_marginTop="16dp"
         android:text="Color:"
         android:textSize="16sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/textPrimary"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -221,7 +294,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"
-            android:textColor="@color/blue"
+            android:textColor="@color/accent"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="saveEventAction"

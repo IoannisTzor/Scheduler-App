@@ -1,7 +1,7 @@
 what it needs:
 Ability to add recurring events (Classes) (done)
 Ability to add single events (Projects) (done)
-Drop down list of projects with multiple ways to order them (Due date, difficulty, importance)
+Drop down list of projects with multiple ways to order them (Due date, difficulty, importance) (done)
 connectivity to blackboard (later on)
 connectivity to phones calendar app
 notify when things are due soon (done)
