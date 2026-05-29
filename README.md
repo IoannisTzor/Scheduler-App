@@ -36,15 +36,24 @@ A full-featured personal calendar app built natively for Android, designed to he
 ---
 
 ## Screenshots
-
+###  Main Page Monthly View
+  
  ![Main page Monthly view](screenshots/Monthly.png)
-
+ 
+###  Weekly View
+  
  ![weekly view](screenshots/Weekly.png)
-
+ 
+###  Daily View
+  
  ![Daily view](screenshots/Daily.png)
  
+###   New Event
+  
  ![New event screen](screenshots/NewEvent.png)
- 
+
+### Projects View
+  
  ![Projects view](screenshots/Projects.png)
  
 ---
