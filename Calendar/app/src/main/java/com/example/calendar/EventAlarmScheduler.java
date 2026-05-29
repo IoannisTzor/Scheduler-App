@@ -46,7 +46,7 @@ public class EventAlarmScheduler
 
     public static void rescheduleAll(Context context)
     {
-        for (Event event : Event.eventsList)
+        for (Event event : Event.getAll())
             schedule(context, event);
     }
 

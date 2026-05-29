@@ -20,7 +20,7 @@ public class EventStorage
         try
         {
             JSONArray array = new JSONArray();
-            for (Event event : Event.eventsList)
+            for (Event event : Event.getAll())
             {
                 JSONObject obj = new JSONObject();
                 obj.put("id", event.getId());
@@ -67,7 +67,7 @@ public class EventStorage
             }
 
             JSONArray array = new JSONArray(sb.toString());
-            Event.eventsList.clear();
+            Event.clear();
 
             for (int i = 0; i < array.length(); i++)
             {
@@ -79,7 +79,7 @@ public class EventStorage
                 EventType eventType = EventType.valueOf(
                     obj.optString("eventType", "CLASS")
                 );
-                Event.eventsList.add(new Event(
+                Event.add(new Event(
                     id,
                     obj.getString("name"),
                     LocalDate.parse(obj.getString("date")),

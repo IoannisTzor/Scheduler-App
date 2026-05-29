@@ -4,36 +4,50 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Event
 {
-    public static ArrayList<Event> eventsList = new ArrayList<>();
+    private static final ArrayList<Event> events = new ArrayList<>();
+
+    // --- Controlled access to the event list ---
+
+    public static List<Event> getAll()               { return Collections.unmodifiableList(events); }
+    public static Event get(int index)               { return events.get(index); }
+    public static int indexOf(Event event)           { return events.indexOf(event); }
+    public static void add(Event event)              { events.add(event); }
+    public static void set(int index, Event event)   { events.set(index, event); }
+    public static void remove(int index)             { events.remove(index); }
+    public static void clear()                       { events.clear(); }
+
+    // --- Queries ---
 
     public static ArrayList<Event> eventsForDate(LocalDate date)
     {
-        ArrayList<Event> events = new ArrayList<>();
-        for (Event event : eventsList)
+        ArrayList<Event> result = new ArrayList<>();
+        for (Event event : events)
         {
             if (event.occursOn(date))
-                events.add(event);
+                result.add(event);
         }
-        return events;
+        return result;
     }
 
     public static ArrayList<Event> eventsForDateAndTime(LocalDate date, LocalTime time)
     {
-        ArrayList<Event> events = new ArrayList<>();
-        for (Event event : eventsList)
+        ArrayList<Event> result = new ArrayList<>();
+        for (Event event : events)
         {
             if (event.occursOn(date) && event.startTime.getHour() == time.getHour())
-                events.add(event);
+                result.add(event);
         }
-        return events;
+        return result;
     }
 
     public static Event findById(int id)
     {
-        for (Event event : eventsList)
+        for (Event event : events)
         {
             if (event.id == id) return event;
         }
@@ -43,7 +57,7 @@ public class Event
     public static ArrayList<Event> projectsSortedByDate()
     {
         ArrayList<Event> projects = new ArrayList<>();
-        for (Event event : eventsList)
+        for (Event event : events)
         {
             if (event.eventType == EventType.PROJECT)
                 projects.add(event);

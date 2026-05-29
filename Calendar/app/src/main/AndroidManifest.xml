@@ -25,10 +25,10 @@
             android:name=".ProjectsActivity"
             android:exported="false" />
         <activity
-            android:name=".week_view"
+            android:name=".WeekViewActivity"
             android:exported="false" />
         <activity
-            android:name=".event_edit"
+            android:name=".EventEditActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -46,7 +46,7 @@ public class ProjectsActivity extends AppCompatActivity
 
     public void weeklyAction(View view)
     {
-        startActivity(new Intent(this, week_view.class));
+        startActivity(new Intent(this, WeekViewActivity.class));
     }
 
     public void dailyAction(View view)
@@ -146,11 +146,11 @@ public class ProjectsActivity extends AppCompatActivity
             holder.importanceTV.setText("Importance: " + project.getImportance() + "/10");
             holder.difficultyTV.setText("Difficulty: " + project.getDifficulty() + "/10");
             holder.itemView.setOnClickListener(v -> {
-                int index = Event.eventsList.indexOf(project);
+                int index = Event.indexOf(project);
                 if (index >= 0)
                 {
-                    Intent intent = new Intent(ProjectsActivity.this, event_edit.class);
-                    intent.putExtra(event_edit.EXTRA_EVENT_INDEX, index);
+                    Intent intent = new Intent(ProjectsActivity.this, EventEditActivity.class);
+                    intent.putExtra(EventEditActivity.EXTRA_EVENT_INDEX, index);
                     startActivity(intent);
                 }
             });

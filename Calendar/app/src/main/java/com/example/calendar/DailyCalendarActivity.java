@@ -124,10 +124,10 @@ public class DailyCalendarActivity extends AppCompatActivity
             eventView.setTextColor(getResources().getColor(R.color.white, null));
             eventView.setTextSize(12);
 
-            final int index = Event.eventsList.indexOf(event);
+            final int index = Event.indexOf(event);
             eventView.setOnClickListener(v -> {
-                Intent intent = new Intent(this, event_edit.class);
-                intent.putExtra(event_edit.EXTRA_EVENT_INDEX, index);
+                Intent intent = new Intent(this, EventEditActivity.class);
+                intent.putExtra(EventEditActivity.EXTRA_EVENT_INDEX, index);
                 startActivity(intent);
             });
 
@@ -149,7 +149,7 @@ public class DailyCalendarActivity extends AppCompatActivity
 
     public void newEventAction(View view)
     {
-        startActivity(new Intent(this, event_edit.class));
+        startActivity(new Intent(this, EventEditActivity.class));
     }
 
     public void monthlyAction(View view)
@@ -159,7 +159,7 @@ public class DailyCalendarActivity extends AppCompatActivity
 
     public void weeklyAction(View view)
     {
-        startActivity(new Intent(this, week_view.class));
+        startActivity(new Intent(this, WeekViewActivity.class));
     }
 
     public void dailyAction(View view) {}
